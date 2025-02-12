@@ -1,0 +1,28 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Cortex Debug (OpenOCD)",
+            "cwd": "${workspaceRoot}",
+            "executable": "./target/thumbv7em-none-eabihf/debug/app",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            // "device": "STM32F767ZI",
+            "configFiles": [
+                "interface/stlink.cfg",
+                "target/stm32f4x.cfg"
+            ],
+            // "svdFile": "STM32F767.svd",
+            "gdbPath": "gdb-multiarch",
+            // "objdumpPath": "arm-none-eabi-objdump",
+            // "nmPath": "arm-none-eabi-nm",
+            "preLaunchTask": "cargo build",
+            // "runToEntryPoint": "main",
+            "postRestartCommands": [
+                "monitor reset halt",
+                "load"
+            ]
+        }
+    ]
+}
